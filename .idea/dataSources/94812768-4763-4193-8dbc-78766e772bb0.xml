@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="article.sqlite">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.7">
+    <root id="1"/>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="7" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <table id="8" parent="2" name="tb_article"/>
+    <table id="9" parent="2" name="tb_articlecollect"/>
+    <table id="10" parent="2" name="tb_articlepraise"/>
+    <table id="11" parent="2" name="tb_articleread"/>
+    <table id="12" parent="2" name="tb_articleshare"/>
+    <table id="13" parent="2" name="tb_master"/>
+    <table id="14" parent="2" name="tb_masterfriend"/>
+    <table id="15" parent="2" name="user"/>
+    <column id="16" parent="6" name="type">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="17" parent="6" name="name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="18" parent="6" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="19" parent="6" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0</DataType>
+    </column>
+    <column id="20" parent="6" name="sql">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="21" parent="7" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="22" parent="7" name="seq">
+      <Position>2</Position>
+    </column>
+    <column id="23" parent="8" name="articleid">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="8" name="master_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="8" name="articletime">
+      <Position>3</Position>
+      <DataType>TIMESTAMP|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="26" parent="8" name="articletitle">
+      <Position>4</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="8" name="articlecontent">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="8" name="articlefrom">
+      <Position>6</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="8" name="articletype">
+      <Position>7</Position>
+      <DataType>CHAR(10)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="30" parent="8" name="articleread">
+      <Position>8</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="31" parent="8" name="articlepraise">
+      <Position>9</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="32" parent="8" name="articlecollect">
+      <Position>10</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="33" parent="8" name="articleshare">
+      <Position>11</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="34" parent="8">
+      <ColNames>articleid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="35" parent="8">
+      <ColNames>master_id</ColNames>
+      <RefTableName>tb_master</RefTableName>
+      <RefColNames>masterid</RefColNames>
+    </foreign-key>
+    <check id="36" parent="8">
+      <Predicate>articletype in(&apos;0&apos;,&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;,&apos;6&apos;,&apos;7&apos;,&apos;8&apos;,&apos;9&apos;)</Predicate>
+    </check>
+    <column id="37" parent="9" name="articlecollectid">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="9" name="articlecollecttime">
+      <Position>2</Position>
+      <DataType>TIMESTAMP|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="39" parent="9" name="article_id">
+      <Position>3</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="9" name="articlecollect_id">
+      <Position>4</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="41" parent="9">
+      <ColNames>articlecollectid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="42" parent="9">
+      <ColNames>article_id</ColNames>
+      <RefTableName>tb_article</RefTableName>
+      <RefColNames>articleid</RefColNames>
+    </foreign-key>
+    <foreign-key id="43" parent="9">
+      <ColNames>articlecollect_id</ColNames>
+      <RefTableName>tb_master</RefTableName>
+      <RefColNames>masterid</RefColNames>
+    </foreign-key>
+    <column id="44" parent="10" name="articlepraiseid">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="45" parent="10" name="articlepraisetime">
+      <Position>2</Position>
+      <DataType>TIMESTAMP|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="46" parent="10" name="article_id">
+      <Position>3</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="10" name="articlepraise_id">
+      <Position>4</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="48" parent="10">
+      <ColNames>articlepraiseid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="49" parent="10">
+      <ColNames>article_id</ColNames>
+      <RefTableName>tb_article</RefTableName>
+      <RefColNames>articleid</RefColNames>
+    </foreign-key>
+    <foreign-key id="50" parent="10">
+      <ColNames>articlepraise_id</ColNames>
+      <RefTableName>tb_master</RefTableName>
+      <RefColNames>masterid</RefColNames>
+    </foreign-key>
+    <column id="51" parent="11" name="articlereadid">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="52" parent="11" name="articlereadtime">
+      <Position>2</Position>
+      <DataType>TIMESTAMP|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="53" parent="11" name="article_id">
+      <Position>3</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="11" name="articleread_id">
+      <Position>4</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="55" parent="11">
+      <ColNames>articlereadid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="56" parent="11">
+      <ColNames>article_id</ColNames>
+      <RefTableName>tb_article</RefTableName>
+      <RefColNames>articleid</RefColNames>
+    </foreign-key>
+    <foreign-key id="57" parent="11">
+      <ColNames>articleread_id</ColNames>
+      <RefTableName>tb_master</RefTableName>
+      <RefColNames>masterid</RefColNames>
+    </foreign-key>
+    <column id="58" parent="12" name="articleshareid">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="59" parent="12" name="articlesharetime">
+      <Position>2</Position>
+      <DataType>TIMESTAMP|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="60" parent="12" name="article_id">
+      <Position>3</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="12" name="articleshare_id">
+      <Position>4</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="62" parent="12">
+      <ColNames>articleshareid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="63" parent="12">
+      <ColNames>article_id</ColNames>
+      <RefTableName>tb_article</RefTableName>
+      <RefColNames>articleid</RefColNames>
+    </foreign-key>
+    <foreign-key id="64" parent="12">
+      <ColNames>articleshare_id</ColNames>
+      <RefTableName>tb_master</RefTableName>
+      <RefColNames>masterid</RefColNames>
+    </foreign-key>
+    <column id="65" parent="13" name="masterid">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="66" parent="13" name="username">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="67" parent="13" name="password">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="68" parent="13" name="mastertime">
+      <Position>4</Position>
+      <DataType>TIMESTAMP|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="69" parent="13" name="mastername">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="70" parent="13" name="mastersex">
+      <Position>6</Position>
+      <DataType>CHAR(2)|0</DataType>
+      <DefaultExpression>&apos;男&apos;</DefaultExpression>
+    </column>
+    <column id="71" parent="13" name="masterphone">
+      <Position>7</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="72" parent="13" name="masteremail">
+      <Position>8</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="73" parent="13" name="masterwechat">
+      <Position>9</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="74" parent="13" name="masterqq">
+      <Position>10</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <index id="75" parent="13" name="sqlite_autoindex_tb_master_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="76" parent="13">
+      <ColNames>masterid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="77" parent="13">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_tb_master_1</UnderlyingIndexName>
+    </key>
+    <check id="78" parent="13">
+      <Predicate>mastersex in(&apos;男&apos;,&apos;女&apos;)</Predicate>
+    </check>
+    <column id="79" parent="14" name="masterfriendid">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="80" parent="14" name="masterfriendtime">
+      <Position>2</Position>
+      <DataType>TIMESTAMP|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="81" parent="14" name="master_id">
+      <Position>3</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="82" parent="14" name="masterfriend_id">
+      <Position>4</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="83" parent="14" name="masterfriendtype">
+      <Position>5</Position>
+      <DataType>CHAR(2)|0</DataType>
+      <DefaultExpression>&apos;粉丝&apos;</DefaultExpression>
+    </column>
+    <key id="84" parent="14">
+      <ColNames>masterfriendid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="85" parent="14">
+      <ColNames>master_id</ColNames>
+      <RefTableName>tb_master</RefTableName>
+      <RefColNames>masterid</RefColNames>
+    </foreign-key>
+    <foreign-key id="86" parent="14">
+      <ColNames>masterfriend_id</ColNames>
+      <RefTableName>tb_master</RefTableName>
+      <RefColNames>masterid</RefColNames>
+    </foreign-key>
+    <check id="87" parent="14">
+      <Predicate>masterfriendtype in(&apos;粉丝&apos;,&apos;好友&apos;)</Predicate>
+    </check>
+    <column id="88" parent="15" name="masterid">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="89" parent="15" name="username">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="90" parent="15" name="password">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="91" parent="15" name="mastertime">
+      <Position>4</Position>
+      <DataType>TIMESTAMP|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="92" parent="15" name="mastername">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="93" parent="15" name="mastersex">
+      <Position>6</Position>
+      <DataType>CHAR(2)|0</DataType>
+      <DefaultExpression>&apos;男&apos;</DefaultExpression>
+    </column>
+    <column id="94" parent="15" name="masterphone">
+      <Position>7</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="95" parent="15" name="masteremail">
+      <Position>8</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="96" parent="15" name="masterwechat">
+      <Position>9</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="97" parent="15" name="masterqq">
+      <Position>10</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <index id="98" parent="15" name="sqlite_autoindex_user_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="99" parent="15">
+      <ColNames>masterid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="100" parent="15">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_user_1</UnderlyingIndexName>
+    </key>
+    <check id="101" parent="15">
+      <Predicate>mastersex in(&apos;男&apos;,&apos;女&apos;)</Predicate>
+    </check>
+  </database-model>
+</dataSource>

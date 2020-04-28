@@ -1,0 +1,32 @@
+<!--
+基础布局:
+应用中的每一个页面主体不同，但是基本布局是相同的。
+每个模板会 扩展 同一个 基础模板并重载相应的小节，而不是重写整个HTML 结构。
+-->
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='auth/style.css') }}">
+<nav>
+  <h1>Flaskr</h1>
+  <ul>
+    {% if g.user %}
+      <li><span>{{ g.user['username'] }}</span>
+      <li><a href="{{ url_for('auth.logout') }}">LogOut</a>
+      <li><a href="{{ url_for('blog.index') }}">Blogs</a>
+      <li><a href="{{ url_for('mark.index') }}">Markdowns</a>
+      <li><a href="{{ url_for('imag.index') }}">Images</a>
+    {% else %}
+      <li><a href="{{ url_for('auth.login') }}">LogIn</a>
+      <li><a href="{{ url_for('auth.register') }}">Register</a>
+    {% endif %}
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>

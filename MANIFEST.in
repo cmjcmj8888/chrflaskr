@@ -1,0 +1,7 @@
+include chrflaskr/flaskr/schema.sql
+
+graft chrflaskr/flaskr/static
+
+graft chrflaskr/flaskr/templates
+
+global-exclude *.pyc

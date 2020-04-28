@@ -1,0 +1,31 @@
+<!--博客主页：索引-->
+
+
+{% extends 'articlebase.html' %}
+
+{% block header %}
+  <h1>{% block title %}Markdowns{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('articlemark.create') }}">New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for mark in marks %}
+    <article class="post">
+      <header>
+        <div>
+          <h1>{{ mark['title'] }}</h1>
+          <div class="about">by {{ mark['username'] }} on {{ mark['created'].strftime('%Y-%m-%d') }}</div>
+        </div>
+        {% if g.user['id'] == mark['author_id'] %}
+          <a class="action" href="{{ url_for('articlemark.update', id=mark['id']) }}">Edit</a>
+        {% endif %}
+      </header>
+      <p class="body">{{ mark['body'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
